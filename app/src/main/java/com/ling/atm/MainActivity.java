@@ -6,12 +6,27 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private final static int REQUEST_LOGIN = 102;
     boolean logon = false;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_LOGIN){
+            if(resultCode == RESULT_OK){
+                String uid = data.getStringExtra("LOGIN_USERID");
+                String pw = data.getStringExtra("LOGIN_PASSWD");
+                Log.d("RESULT",uid + "/" +pw);
+            }else{
+                finish();
+            }
+        }}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (!logon){
             Intent intent = new Intent(this,LoginActivity.class);
-            startActivity(intent);
+         //   startActivity(intent);
+             startActivityForResult(intent, REQUEST_LOGIN);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
