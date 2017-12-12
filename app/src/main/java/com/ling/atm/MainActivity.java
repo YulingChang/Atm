@@ -10,22 +10,38 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_LOGIN = 102;
+    private final static int REQUEST_USERINFO= 103;
     boolean logon = false;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_LOGIN){
+        switch(requestCode){
+            case REQUEST_LOGIN:
             if(resultCode == RESULT_OK){
                 String uid = data.getStringExtra("LOGIN_USERID");
-                String pw = data.getStringExtra("LOGIN_PASSWD");
-                Log.d("RESULT",uid + "/" +pw);
+                Toast.makeText(this,"Login userid: "+uid,Toast.LENGTH_LONG).show();
+                getSharedPreferences("test", MODE_PRIVATE)
+                        .edit()
+                        .putString("USER", uid)
+                        .apply();
+               /*   Log.d("RESULT",uid + "/" +pw);*/
             }else{
                 finish();
             }
+            break;
+            case REQUEST_USERINFO:
+                if (resultCode == RESULT_OK){
+                    String nickname = data.getStringExtra("EXTRA_NICKNAME");
+                    String tel = data.getStringExtra("EXTRA_TEL");
+                    Toast.makeText(this,"Nickname: "+nickname, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Phone: "+tel, Toast.LENGTH_LONG).show();
+                }
+                break;
         }}
 
     @Override
