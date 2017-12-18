@@ -21,7 +21,6 @@ public class UserInfoActivity extends AppCompatActivity {
         edTel.setText(tel);
     }
     public void back(View view){
-       
         String nickname = edNickname.getText().toString();
         String tel = edTel.getText().toString();
         getIntent().putExtra("EXTRA_USERNICKNAME",nickname);
