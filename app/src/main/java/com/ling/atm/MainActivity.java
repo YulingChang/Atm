@@ -10,7 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import static com.ling.atm.R.id.list;
+import static com.ling.atm.R.id.spinner;
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_LOGIN = 102;
@@ -73,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
         //                .setAction("Action", null).show();
             }
         });
+        ListView listView = (ListView) findViewById(R.id.list);
+        String[] data = {"AAA","BBB","CCC"};
+        ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_list_item_1,data);
+        listView.setAdapter(adapter);
+
     }
 
     @Override
