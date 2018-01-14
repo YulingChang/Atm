@@ -24,12 +24,12 @@ public class Ch8Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 Log.d(TAG,"onClick"+position);
-            }
+            }//有選擇項目
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
+            }//沒選擇項目
         });
 
 

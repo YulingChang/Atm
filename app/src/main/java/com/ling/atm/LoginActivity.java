@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         String userid = getSharedPreferences("atm", MODE_PRIVATE)
                  .getString("USERID", " ");
         edUserid.setText(userid);
+        //7-3-2
 
     }
     public void Login(View view) {
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText edPasswd = (EditText) findViewById(R.id.passwd);
         uid = edUserid.getText().toString();
         pw = edPasswd.getText().toString();
+        //7-3-1
         // http://atm201605.appspot.com/login?uid=jack&pw=1234
 
 
@@ -45,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 //            Toast.makeText(this,"登入成功",Toast.LENGTH_LONG).show();
 //            getIntent().putExtra("LOGIN_USERID",uid);
 //            getIntent().putExtra("LOGIN_PASSWD",pw);
-//            setResult(RESULT_OK,getIntent());
+//            setResult(RESULT_OK,getIntent());   5-32
 //            finish();
 //        }else{
 //            new AlertDialog.Builder(this)

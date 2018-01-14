@@ -20,7 +20,8 @@ import static com.ling.atm.R.id.spinner;
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_LOGIN = 102;
     private final static int REQUEST_USERINFO= 103;
-    boolean logon = false;
+    //定義功能常數
+    boolean logon = true;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -59,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //6-1-3浮動按鈕
 
         if (!logon){
             Intent intent = new Intent(this,LoginActivity.class);
-         //   startActivity(intent);
+         //   startActivity(intent);  這會有bug
              startActivityForResult(intent, REQUEST_LOGIN);
+            //尚未登入時  啟動LoginActivity
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1,data);
         listView.setAdapter(adapter);
+        //8-2
+        //字串陣列  --  ArrayAdapter
+        //以上為呼叫ListView的setAdapter方法
 
     }
 
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+        //7-4-1
     }
 
     @Override
